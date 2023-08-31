@@ -27,9 +27,10 @@ COPY . /app/
 WORKDIR /app/
 RUN flutter build web
 
-# Stage 2
+# Stage 2 
 FROM nginx:1.21.1-alpine
 COPY --from=build-env /app/build/web /usr/share/nginx/html
+
 
 # # Copy the custom NGINX configuration file
 # COPY nginx.conf /etc/nginx/conf.d/default.conf
